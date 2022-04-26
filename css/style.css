@@ -51,6 +51,10 @@ main{
     color: white;
 }
 
+.bg-red{
+    background-color: red;
+}
+
 /* misure blocchi griglia */
 
 .alt10{

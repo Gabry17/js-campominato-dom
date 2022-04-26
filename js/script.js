@@ -22,6 +22,12 @@ if(valInput === 'facile'){
 } else if (valInput === 'difficile') {
     newArray = gridGame(49)
 }
+
+//creare 16 bombe casuali tra 1 e gridGame(num)
+const numRndArray = bomb(16, newArray.length);
+const newElemArray = [];
+console.log(numRndArray);
+
 //creare griglia
 //prendere elemento griglia html 
 const container = document.querySelector('.container');
@@ -44,13 +50,35 @@ for(let i = 0; i < newArray.length; i++){
     }
 
     //al click di ogni casella aggiungere classe bg-blue
-    div.addEventListener('click', function(){
-        this.classList.add('bg-blue');
-    })
+    // div.addEventListener('click', function(){
+    //     this.classList.add('bg-blue');
+    // })
+    div.addEventListener('click', clickCell);
 
 
     container.append(div);
 
+}
+
+//funzione che al click delle celle ti dice se ce una bomba o una casella normale
+function clickCell(){
+    //prendere elemento dentro la casella
+    let elementInCell = parseInt(this.querySelector('span').textContent);
+
+    if(numRndArray.includes(elementInCell) ){
+        //se clicco la l elemento bomba aggiugno class bg-red
+        this.classList.add('bg-red');
+    } else{
+        //se non clicco la bomba aggiungo bg-blue
+        //ogni elemento selezionato lo metto nell array nuovo
+        //levo il click dopo che clicco l elemento
+        this.classList.add('bg-blue');
+        newElemArray.push(elementInCell);
+        this.style.pointerEvents = "none";
+    }
+
+    console.log(newElemArray);
+    
 }
 }
 
@@ -88,5 +116,8 @@ function bomb(numBomb, endNum){
     }
     return listBomb;
 }
+
+
+
 
 
