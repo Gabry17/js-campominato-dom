@@ -24,9 +24,12 @@ if(valInput === 'facile'){
 }
 
 //creare 16 bombe casuali tra 1 e gridGame(num)
-const numRndArray = bomb(16, newArray.length);
+const bombX = 16;
+const numRndArray = bomb(bombX, newArray.length);
 const newElemArray = [];
+let numWin = newArray.length - bombX;
 console.log(numRndArray);
+console.log(numWin);
 
 //creare griglia
 //prendere elemento griglia html 
@@ -64,17 +67,24 @@ for(let i = 0; i < newArray.length; i++){
 function clickCell(){
     //prendere elemento dentro la casella
     let elementInCell = parseInt(this.querySelector('span').textContent);
+    const elemTitle = document.querySelector('h3');
 
     if(numRndArray.includes(elementInCell) ){
         //se clicco la l elemento bomba aggiugno class bg-red
         this.classList.add('bg-red');
+        //al cvlick visualizzare tentativi efettuati e la perdita 
+        elemTitle.innerHTML = `Hai perso tentativi effettuati: ${newElemArray.length}`;
     } else{
         //se non clicco la bomba aggiungo bg-blue
-        //ogni elemento selezionato lo metto nell array nuovo
-        //levo il click dopo che clicco l elemento
         this.classList.add('bg-blue');
+        //ogni elemento selezionato lo metto nell array nuovo
         newElemArray.push(elementInCell);
+        //levo il click dopo che clicco l elemento
         this.style.pointerEvents = "none";
+        //raggiunti i tentativi massimi visualizzare la vincita
+        if(newElemArray.length === numWin){
+            elemTitle.innerHTML = `Complimenti, hai vinto`;
+        }
     }
 
     console.log(newElemArray);
@@ -116,7 +126,6 @@ function bomb(numBomb, endNum){
     }
     return listBomb;
 }
-
 
 
 
