@@ -1,0 +1,115 @@
+/* RESET */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* HEADER */
+header{
+    width: 80%;
+    height: 100px;
+    margin: 0 auto;
+    line-height: 100px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+}
+
+button{
+    margin-left: 1em;
+}
+
+/* MAIN */
+main{
+    width: 100%;
+    height: calc(100vh - 100px);
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* griglia */
+.container{
+    border: 3px solid black;
+    width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.square{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid black;
+}
+
+.bg-blue{
+    background-color: blue;
+    color: white;
+}
+
+/* misure blocchi griglia */
+
+.alt10{
+    width: calc(100% / 10);
+    height: calc(600px / 10);
+}
+
+.alt9{
+    width: calc(100% / 9);
+    height: calc(600px / 9);
+}
+
+.alt7{
+    width: calc(100% / 7);
+    height: calc(600px / 7);
+}
+
+/* MEDIA QUERY */
+@media screen and (max-width: 700px) {
+
+    h1{
+        font-size: 1.5em;
+    }
+    h2{
+        font-size: 1em;
+    }
+
+    .container{
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .container{
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .container{
+        width: 300px;
+    }
+
+    header{
+        width: 90%;
+    }
+
+    h1{
+        font-size: 1em;
+    }
+
+    .play label,
+    .play select,
+    .play button{
+        font-size: .7em; 
+    }
+
+
+    
+
+    
+}
